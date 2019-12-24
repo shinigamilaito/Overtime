@@ -6,10 +6,12 @@
     <%= post.date %>
   </td>
   <td>
-    <%= post.user.full_nam
-    %>
+    <%= post.user.full_name %>
   </td>
   <td>
     <%= truncate post.rationale %>
+  </td>
+  <td id=<%= dom_id(post, :edit) %>>
+    <%= link_to 'Edit', edit_post_path(post), id: dom_id(post, :edit) %>
   </td>
 </tr>
