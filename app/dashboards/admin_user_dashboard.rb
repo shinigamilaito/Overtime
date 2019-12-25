@@ -10,7 +10,7 @@ class AdminUserDashboard < Administrate::BaseDashboard
   ATTRIBUTE_TYPES = {
     posts: Field::HasMany,
     id: Field::Number,
-    email: Field::String,
+    email: Field::String.with_options(searchable: true),
     password: Field::String,
     first_name: Field::String,
     last_name: Field::String,
