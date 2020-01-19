@@ -88,6 +88,10 @@ describe 'navigate' do
     end
 
     it "can be edited" do
+      logout(:user)
+      user = @post.user
+      scope = Devise::Mapping.find_scope!(user)
+      login_as(user, scope: scope)
       visit edit_post_path(@post)
 
       fill_in 'post[date]', with: Date.today
@@ -95,6 +99,16 @@ describe 'navigate' do
       click_on 'Save'
 
       expect(page).to have_content("Edited content")
+    end
+
+    it 'cannot be edited by a non authorized user' do
+      logout(:user)
+      non_authorized_user = FactoryGirl.create(:non_authorized_user)
+      scope = Devise::Mapping.find_scope!(non_authorized_user)
+      login_as(non_authorized_user, scope: scope)
+
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path)
     end
   end
 end
