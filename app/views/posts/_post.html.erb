@@ -18,9 +18,9 @@
     <%= status_label post.status %>
   </td>
   <td>
-    <%= link_to 'Edit', edit_post_path(post), id: dom_id(post, :edit) if policy(post).update? %>
+    <%= link_to '', edit_post_path(post), id: dom_id(post, :edit), class: 'glyphicon glyphicon-pencil index-icons' if policy(post).update? %>
   </td>
   <td>
-    <%= link_to 'Delete', post, method: :delete, id: "delete_post_#{post.id}_from_index", data: { confirm: 'Are your sure?' } %>
+    <%= link_to '', post, method: :delete, id: "delete_post_#{post.id}_from_index", class:'glyphicon glyphicon-trash index-icons', data: { confirm: 'Are your sure?' } %>
   </td>
 </tr>
