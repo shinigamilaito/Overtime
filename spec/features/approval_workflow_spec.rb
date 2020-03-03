@@ -29,5 +29,16 @@ describe 'navigate' do
       visit edit_post_path(@post)
       expect(page).to_not have_content('Approved')
     end
+
+    it 'should not be editable by the post creator if status is aproved' do
+      logout(:user)
+      user = FactoryGirl.create(:user)
+      scope = Devise::Mapping.find_scope!(user)
+      login_as(user, scope: scope)
+
+      @post.update(user_id: user.id, status: 'approved')
+      visit edit_post_path(@post)
+      expect(current_path).to eq(root_path)
+    end
   end
 end
