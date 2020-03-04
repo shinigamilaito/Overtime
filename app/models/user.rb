@@ -2,6 +2,7 @@ class User < ApplicationRecord
   PHONE_REGEX = /\A\d*\z/
 
   has_many :posts
+  has_many :audit_logs
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
