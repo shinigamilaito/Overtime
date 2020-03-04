@@ -34,7 +34,10 @@ describe 'navigate' do
 
     it 'has a scope so that only post creators can see their posts' do
       other_user = FactoryGirl.create(:non_authorized_user)
-      post_from_other_user = Post.create(date: Date.today, rationale: "This post shouldn't be seen", user_id: other_user.id, overtime_request: 3.5)
+      post_from_other_user = Post.create(date: Date.today,
+                                         rationale: "This post shouldn't be seen",
+                                         user_id: other_user.id,
+                                         overtime_request: 3.5)
 
       visit posts_path
 

@@ -5,7 +5,7 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :first_name, :last_name, presence: true
+  validates :first_name, :last_name, :phone, presence: true
 
   def full_name
     last_name.upcase + ", " + first_name.upcase
