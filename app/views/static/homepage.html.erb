@@ -1,1 +1,5 @@
-<%= render 'static/admin' %>
+<% if admin_types.include?(current_user.try(:type)) %>
+  <%= render 'static/admin' %>
+<% else %>
+  <%= render 'static/employee' %>
+<% end %>
