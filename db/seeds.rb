@@ -25,9 +25,9 @@ end
 
 puts "100 Posts have been created"
 
-100.times do |audit_log|
+[6, 13, 20].each do |number_days|
   AuditLog.create!(user: @user,
-               start_date: (Date.today - 6.days))
+               start_date: (Date.today - number_days.days))
 end
 
-puts "100 Audit logs have been created"
+puts "3 Audit logs have been created"
