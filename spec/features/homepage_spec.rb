@@ -16,14 +16,16 @@ describe 'Homepage' do
     expect(@post.reload.status).to eq('approved')
   end
 
-  it 'non admin user can not approve posts from the homepage' do
+  it 'allows the employee to change the audit log status from the homepage' do
     logout(:user)
-    non_admin_user = FactoryGirl.create(:user)
-    scope = Devise::Mapping.find_scope!(non_admin_user)
-    login_as(non_admin_user, scope: scope)
+    audit_log = FactoryGirl.create(:audit_log)
+    user = audit_log.user
+    scope = Devise::Mapping.find_scope!(user)
+    login_as(user, scope: scope)
 
     visit root_path
-    click_on("approve_#{@post.id}")
-    expect(@post.reload.status).to eq('submitted')
+    click_on("confirm_#{audit_log.id}")
+
+    expect(audit_log.reload.status).to eq('confirmed')
   end
 end
