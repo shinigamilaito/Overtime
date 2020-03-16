@@ -1,4 +1,4 @@
-@user = User.create(email: "test@test.com",
+@employee = Employee.create(email: "test@test.com",
                     password: "asdfasdf",
                     password_confirmation: "asdfasdf",
                     first_name: "Edgar",
@@ -17,7 +17,7 @@ AdminUser.create(email: "admin@test.com",
 puts "1 admin user created"
 
 [6, 13, 20].each do |number_days|
-  AuditLog.create!(user: @user,
+  AuditLog.create!(user: @employee,
                    start_date: (Date.today - number_days.days))
 end
 
@@ -26,7 +26,7 @@ puts "3 Audit logs have been created"
 100.times do |post|
   Post.create!(date: Date.today,
                rationale: "#{post} rationale content",
-               user: @user,
+               user: @employee,
                overtime_request: 3.5)
 end
 

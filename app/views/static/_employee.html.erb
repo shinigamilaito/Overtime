@@ -1,6 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <% if @pending_audit_confirmations.blank? %>
+    <% if @pending_audit_confirmations.present? %>
       <div class="pending-homepage employee-blocks">
         <h3>Pending Your Confirmation</h3>
 
