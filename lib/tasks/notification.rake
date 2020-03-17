@@ -7,6 +7,7 @@ namespace :notification do
                              "confirm your hours for last week: https://eee-overtime.herokuapp.com"
 
       employees.each do |employee|
+        AuditLog.create!(user: employee)
         SmsTool.send_sms(number: employee.phone, message: notification_message)
       end
     end
