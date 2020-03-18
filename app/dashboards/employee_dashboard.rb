@@ -17,7 +17,9 @@ class EmployeeDashboard < Administrate::BaseDashboard
     type: Field::String,
     created_at: Field::DateTime,
     updated_at: Field::DateTime,
-    phone: Field::String
+    phone: Field::String,
+    ssn: Field::Number.with_options(searchable: true),
+    company: Field::String
   }.freeze
 
   # COLLECTION_ATTRIBUTES
@@ -27,15 +29,16 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # Feel free to add, remove, or rearrange items.
   COLLECTION_ATTRIBUTES = %i[
   posts
-  id
   email
+  ssn
   ].freeze
 
   # SHOW_PAGE_ATTRIBUTES
   # an array of attributes that will be displayed on the model's show page.
   SHOW_PAGE_ATTRIBUTES = %i[
   posts
-  id
+  ssn
+  company
   email
   phone
   first_name
@@ -49,10 +52,12 @@ class EmployeeDashboard < Administrate::BaseDashboard
   # an array of attributes that will be displayed
   # on the model's form (`new` and `edit`) pages.
   FORM_ATTRIBUTES = %i[
+  ssn
   email
   password
   first_name
   last_name
+  company
   type
   phone
   ].freeze
