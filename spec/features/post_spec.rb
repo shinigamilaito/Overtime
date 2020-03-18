@@ -4,7 +4,7 @@ describe 'navigate' do
   let(:user) { FactoryGirl.create(:user) }
 
   let(:post) do
-    Post.create(date: Date.today, rationale: "Rationale", user_id: user.id, overtime_request: 3.5)
+    Post.create(date: Date.today, rationale: "Rationale", user_id: user.id, daily_hours: 13.5)
   end
 
   before do
@@ -37,7 +37,7 @@ describe 'navigate' do
       post_from_other_user = Post.create(date: Date.today,
                                          rationale: "This post shouldn't be seen",
                                          user_id: other_user.id,
-                                         overtime_request: 3.5)
+                                         daily_hours: 13.5)
 
       visit posts_path
 
@@ -82,14 +82,14 @@ describe 'navigate' do
     it 'can be created from new form page' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "Some rationale"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 13.5
       expect { click_on "Save" }.to change(Post, :count).by(1)
     end
 
     it 'will have a user associated it' do
       fill_in 'post[date]', with: Date.today
       fill_in 'post[rationale]', with: "User Association"
-      fill_in 'post[overtime_request]', with: 3.5
+      fill_in 'post[daily_hours]', with: 13.5
 
 
       click_on "Save"

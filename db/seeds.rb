@@ -31,7 +31,7 @@ puts "3 Audit logs have been created"
   Post.create!(date: Date.today,
                rationale: "#{post} rationale content",
                user: @employee,
-               overtime_request: 3.5)
+               daily_hours: 13.5)
 end
 
 puts "100 Posts have been created"
