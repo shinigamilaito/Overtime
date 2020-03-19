@@ -9,6 +9,7 @@ FactoryGirl.define do
   factory :second_post, class: "Post" do
     date Date.yesterday
     work_performed "Some more content"
+    daily_hours 8.0
     user
   end
 
