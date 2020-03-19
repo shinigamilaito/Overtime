@@ -29,7 +29,7 @@ puts "3 Audit logs have been created"
 
 100.times do |post|
   Post.create!(date: Date.today,
-               rationale: "#{post} rationale content",
+               work_performed: "#{post} work performed",
                user: @employee,
                daily_hours: 13.5)
 end
